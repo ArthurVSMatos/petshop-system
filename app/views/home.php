@@ -93,6 +93,7 @@
             <ul class="menu">
                 <li><a href="http://localhost/petshop-system/public/home">🏠 Dashboard</a></li>
                 <li><a href="#">👥 Clientes (Tutores)</a></li>
+                <li><a href="http://localhost/petshop-system/public/clientes">👥 Clientes (Tutores)</a></li>
                 <li><a href="#">🐶 Pets</a></li>
                 <li><a href="#">📅 Agendamentos</a></li>
                 <li><a href="#">🛒 Vendas / Estoque</a></li>
