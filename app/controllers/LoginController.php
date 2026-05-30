@@ -24,6 +24,13 @@ class LoginController extends Controller {
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
             $senha = $_POST['senha'];
 
+
+            // APAGAR ISSO DEPOIS: Força o login direto para testar os Pets
+$_SESSION['usuario_id'] = 1;
+$_SESSION['usuario_nome'] = "Admin Teste";
+header('Location: http://localhost/petshop-system/public/home');
+exit;
+
             // Conecta ao banco para buscar o funcionário
             $db = Database::getConnection();
             $stmt = $db->prepare("SELECT * FROM funcionarios WHERE email = :email AND status = 'Ativo'");

@@ -38,4 +38,47 @@ class Cliente {
             'endereco' => $dados['endereco']
         ]);
     }
+
+    // ==========================================
+    // MÉTODO ADICIONADO: Buscar cliente por ID
+    // ==========================================
+    public static function buscarPorId($id) {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT * FROM clientes WHERE id_cliente = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // ==========================================
+    // MÉTODO ADICIONADO: Atualizar dados (UPDATE)
+    // ==========================================
+    public static function atualizar($id, $dados) {
+        $db = Database::getConnection();
+        
+        $stmt = $db->prepare("UPDATE clientes 
+                              SET nome = :nome, 
+                                  cpf = :cpf, 
+                                  telefone = :telefone, 
+                                  email = :email, 
+                                  endereco = :endereco 
+                              WHERE id_cliente = :id");
+        
+        return $stmt->execute([
+            'nome'     => $dados['nome'],
+            'cpf'      => $dados['cpf'],
+            'telefone' => $dados['telefone'],
+            'email'    => $dados['email'],
+            'endereco' => $dados['endereco'],
+            'id'       => $id
+        ]);
+    }
+
+    // ==========================================
+    // MÉTODO ADICIONADO: Deletar cliente (DELETE)
+    // ==========================================
+    public static function excluir($id) {
+        $db = Database::getConnection();
+        $stmt = $db->prepare("DELETE FROM clientes WHERE id_cliente = :id");
+        return $stmt->execute(['id' => $id]);
+    }
 }
